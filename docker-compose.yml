@@ -1,0 +1,19 @@
+version: '3'
+services:
+  pris:
+    image: opennms/pris:latest
+    container_name: docker-pris
+    volumes:
+    - ./requisitions:/opt/opennms-pris/requisitions:ro
+    ports:
+    - 8000:8000
+    networks:
+       app_net:
+
+networks:
+  app_net:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+           - subnet: 192.168.0.0/24
